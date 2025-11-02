@@ -27,8 +27,8 @@
     .brand h1 { margin:0; font-size:18px; letter-spacing:0.2px; }
     .brand p { margin:0; font-size:12px; color: rgba(0,0,0,0.55); }
     .hero { background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.85)); border-radius: var(--radius); padding:18px; box-shadow: var(--shadow); }
-    .video-wrap { position:relative; border-radius:10px; overflow:hidden; background: repeating-linear-gradient(135deg, rgba(46,125,50,0.06) 0 8px, rgba(124,179,66,0.02) 8px 16px); display:grid; grid-template-columns: 1fr; }
-    video#intro { width:100%; height:auto; display:block; background: #000; max-height: 520px; aspect-ratio: 16/9; object-fit:cover; }
+    .video-wrap { position:relative; border-radius:10px; overflow:hidden; background: repeating-linear-gradient(135deg, rgba(46,125,50,0.06) 0 8px, rgba(124,179,66,0.02) 8px 16px); display:grid; grid-template-columns: 1fr; margin-bottom:20px; }
+    video#intro, video#extra { width:100%; height:auto; display:block; background:#000; max-height:520px; aspect-ratio:16/9; object-fit:cover; }
     .video-overlay { position:absolute; inset: 12px; display:flex; align-items:flex-end; justify-content:flex-start; pointer-events:none; }
     .play-btn { pointer-events:auto; margin:16px; display:inline-flex; align-items:center; gap:10px; background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); padding:10px 14px; border-radius:999px; backdrop-filter: blur(6px); cursor:pointer; color:#fff; font-weight:600; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
     .play-btn .triangle { width:0;height:0;border-left:10px solid white;border-top:6px solid transparent;border-bottom:6px solid transparent; transform: translateX(2px); }
@@ -42,10 +42,8 @@
     .gallery img:hover { transform: translateY(-6px); }
     .gallery .full { grid-column: 1 / -1; height: 320px; }
     footer { grid-column:1/-1; margin-top:22px; text-align:center; color: rgba(0,0,0,0.55); font-size:13px; }
-    .lightbox { position: fixed; inset:0; background: rgba(5,10,5,0.65); display:none; align-items:center; justify-content:center; z-index:1200; }
-    .lightbox.active { display:flex; }
-    .lightbox-content { max-width:92%; max-height:92%; border-radius:10px; overflow:hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
-    .lightbox img, .lightbox video { width:100%; height:100%; object-fit:contain; display:block; background:#000; }
+    a.contact { color:#2e7d32; font-weight:600; text-decoration:none; }
+    a.contact:hover { text-decoration:underline; }
     @media (max-width:980px) { .container { grid-template-columns: 1fr; padding-bottom: 40px; } .card { order: 3; } .hero { order:1; } header.site { flex-direction:column; align-items:flex-start; gap:8px; } }
     @media (max-width:480px) { .gallery { grid-template-columns: 1fr; } .video-overlay { align-items:center; justify-content:center; } .play-btn { margin:0 0 12px 0; } }
   </style>
@@ -64,42 +62,77 @@
       </header>
       <section class="hero">
         <div class="video-wrap">
-          <video id="intro" controls preload="metadata" poster="">
+          <video id="intro" controls preload="metadata">
             <source src="https://raw.githubusercontent.com/Evergreen-Heven/.com/main/compressed.mp4" type="video/mp4">
           </video>
-          <div class="video-overlay">
-            <button class="play-btn" id="bigPlay"><span class="triangle"></span>Play Intro</button>
-          </div>
         </div>
+
+        <!-- ✅ EXTRA VIDEO PLACEHOLDER -->
+        <div class="video-wrap">
+          <video id="extra" controls preload="metadata" poster="">
+            <source src="https://raw.githubusercontent.com/Evergreen-Heven/.com/main/sample2.mp4" type="video/mp4">
+          </video>
+        </div>
+
         <h2>Welcome to Evergreen Haven</h2>
         <p>Watch our short intro video about the farm.</p>
+
         <div class="gallery">
-        <div class="student-card">
-  <img src="https://raw.githubusercontent.com/Evergreen-Heven/.com/main/IMG_1519.jpeg" alt="Cashew Nursery">
-  <h3>Cashew Nursery</h3>
-  <p>Healthy cashew seedlings growing under Evergreen.</p>
-  <a href="#">SOON TO BE TRANSPLANTED</a>
-</div>
+          <!-- Existing Images -->
+          <div class="student-card">
+            <img src="https://raw.githubusercontent.com/Evergreen-Heven/.com/main/IMG_1519.jpeg" alt="Cashew Nursery">
+            <h3>Cashew Nursery</h3>
+            <p>Healthy cashew seedlings growing under Evergreen.</p>
+            <a href="#">SOON TO BE TRANSPLANTED</a>
+          </div>
 
           <div class="student-card">
-  <img src="https://raw.githubusercontent.com/Evergreen-Heven/.com/main/IMG_1518.jpeg" alt="Cashew Nursery Image">
-  <h3>Cashew Nursery View</h3>
-  <p>A snapshot of our cashew seedlings at Evergreen Haven.</p>
-  <a href="#">Learn More</a>
-</div>
+            <img src="https://raw.githubusercontent.com/Evergreen-Heven/.com/main/IMG_1518.jpeg" alt="Cashew Nursery Image">
+            <h3>Cashew Nursery View</h3>
+            <p>A snapshot of our cashew seedlings at Evergreen Haven.</p>
+            <a href="#">Learn More</a>
+          </div>
 
-         <div class="student-card">
-  <img src="https://raw.githubusercontent.com/Evergreen-Heven/.com/main/IMG_4362.jpeg" alt="Cashew Nursery Image">
-  <h3>Cashew Nursery Close-Up</h3>
-  <p>Detailed look at our thriving Tree of Life at Evergreen Haven.</p>
-  <a href="#">TREE OF LIFE</a>
-</div>
+          <div class="student-card">
+            <img src="https://raw.githubusercontent.com/Evergreen-Heven/.com/main/IMG_4362.jpeg" alt="Cashew Nursery Image">
+            <h3>Cashew Nursery Close-Up</h3>
+            <p>Detailed look at our thriving Tree of Life at Evergreen Haven.</p>
+            <a href="#">TREE OF LIFE</a>
+          </div>
 
           <img src="https://placehold.co/800x600/fef3c7/3a2a12?text=Gallery+4">
           <img src="https://placehold.co/800x600/ffd7a6/3b1f04?text=Gallery+5">
+
+          <!-- ✅ EXTRA 20 IMAGE PLACEHOLDERS -->
+          <img src="https://placehold.co/800x600/daffb3/2e7d32?text=Gallery+6">
+          <img src="https://placehold.co/800x600/e5ffcc/4b7f23?text=Gallery+7">
+          <img src="https://placehold.co/800x600/f5f5f5/3a3a3a?text=Gallery+8">
+          <img src="https://placehold.co/800x600/d0f0c0/1a531b?text=Gallery+9">
+          <img src="https://placehold.co/800x600/e1f5fe/023e8a?text=Gallery+10">
+          <img src="https://placehold.co/800x600/fff3e0/ff6f00?text=Gallery+11">
+          <img src="https://placehold.co/800x600/f3e5f5/6a1b9a?text=Gallery+12">
+          <img src="https://placehold.co/800x600/ede7f6/4527a0?text=Gallery+13">
+          <img src="https://placehold.co/800x600/e8f5e9/1b5e20?text=Gallery+14">
+          <img src="https://placehold.co/800x600/fffde7/f57f17?text=Gallery+15">
+          <img src="https://placehold.co/800x600/efebe9/3e2723?text=Gallery+16">
+          <img src="https://placehold.co/800x600/e0f7fa/006064?text=Gallery+17">
+          <img src="https://placehold.co/800x600/ede7f6/311b92?text=Gallery+18">
+          <img src="https://placehold.co/800x600/fce4ec/880e4f?text=Gallery+19">
+          <img src="https://placehold.co/800x600/f3e5f5/4a148c?text=Gallery+20">
+          <img src="https://placehold.co/800x600/e8eaf6/1a237e?text=Gallery+21">
+          <img src="https://placehold.co/800x600/f1f8e9/33691e?text=Gallery+22">
+          <img src="https://placehold.co/800x600/ede7f6/311b92?text=Gallery+23">
+          <img src="https://placehold.co/800x600/fce4ec/880e4f?text=Gallery+24">
+          <img src="https://placehold.co/800x600/f3e5f5/4a148c?text=Gallery+25">
         </div>
       </section>
-      <footer>© Evergreen Haven — Every tree breathes life.</footer>
+
+      <!-- ✅ Contact Section -->
+      <footer>
+        © Evergreen Haven — Every tree breathes life.<br>
+        📞 <a href="https://wa.me/2205210282" class="contact" target="_blank">WhatsApp: +220 5210282</a> |
+        📧 <a href="mailto:dbaldeh468@gmail.com" class="contact">dbaldeh468@gmail.com</a>
+      </footer>
     </div>
   </div>
 </body>
